@@ -10,6 +10,12 @@ export default [
     },
   },
   {
+    component: 'CNavItem',
+    name: 'Users',
+    to: '/users',
+    icon: 'cil-speedometer',
+  },
+  {
     component: 'CNavTitle',
     name: 'Theme',
   },
