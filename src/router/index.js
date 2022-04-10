@@ -25,6 +25,11 @@ const routes = [
         component: () => import('@/views/users/Index.vue'),
       },
       {
+        path: '/users/create',
+        name: 'Users.create',
+        component: () => import('@/views/users/Create.vue'),
+      },
+      {
         path: '/theme',
         name: 'Theme',
         redirect: '/theme/typography',

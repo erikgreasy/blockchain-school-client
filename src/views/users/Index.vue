@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/users/create" class="btn btn-primary mb-3">Pridať nového</router-link>
     <CTable align="middle" class="mb-0 border" hover responsive>
       <CTableHead color="light">
         <CTableRow>
