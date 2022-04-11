@@ -16,15 +16,13 @@
           </CCol>
 
           <CCol md="8">
-            <CCardTitle>Podrobnosti</CCardTitle>
+            <CCardTitle> Osobné údaje </CCardTitle>
+            <CCardText> <strong>Meno:</strong> {{ `${user.firstName} ${user.lastName}` }} </CCardText>
             <CCardText> <strong>Email:</strong> {{ user.email }} </CCardText>
             <CCardText>
               <strong>Sukromný email:</strong> {{ user.privateEmail }}
             </CCardText>
-            <CCardText>
-              <strong>Titul:</strong> {{ user.academicDegree }}
-            </CCardText>
-            <hr />
+            <hr>
             <CCardTitle> Adresa </CCardTitle>
             <CCardText>
               <strong>Krajina:</strong> {{ user.adress.country }}
@@ -34,6 +32,9 @@
             </CCardText>
             <CCardText>
               <strong>PSČ:</strong> {{ user.adress.postalCode }}
+            </CCardText>
+            <CCardText>
+              <strong>Ulica a číslo:</strong> {{ `${user.adress.street} ${user.adress.houseNumber}` }}
             </CCardText>
             <hr />
             <CCardTitle> Štúdium </CCardTitle>
@@ -45,6 +46,9 @@
             </CCardText>
             <CCardText>
               <strong>Forma:</strong> {{ user.study.form }}
+            </CCardText>
+            <CCardText>
+              <strong>Titul:</strong> {{ user.academicDegree }}
             </CCardText>
           </CCol>
         </CRow>
