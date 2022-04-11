@@ -25,6 +25,11 @@ const routes = [
         component: () => import('@/views/users/Index.vue'),
       },
       {
+        path: '/users/id',
+        name: 'Users.show',
+        component: () => import('@/views/users/Show.vue'),
+      },
+      {
         path: '/theme',
         name: 'Theme',
         redirect: '/theme/typography',
