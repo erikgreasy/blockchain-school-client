@@ -13,7 +13,7 @@ export default [
     component: 'CNavItem',
     name: 'Users',
     to: '/users',
-    icon: 'cil-speedometer',
+    icon: 'cil-user',
   },
   {
     component: 'CNavTitle',

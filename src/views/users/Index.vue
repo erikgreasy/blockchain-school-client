@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/users/create" class="btn btn-primary mb-3">Pridať nového</router-link>
     <CTable align="middle" class="mb-0 border" hover responsive>
       <CTableHead color="light">
         <CTableRow>
@@ -28,7 +29,7 @@
           </CTableDataCell>
           <CTableDataCell class="text-center">
             <div>
-              <CButton component="a" href="#" color="primary" size="sm">Zobraziť detail</CButton>
+              <router-link to="/users/id" class="btn btn-sm btn-primary">Zobraziť detail</router-link>
             </div>
             <!-- <div class="small text-medium-emphasis">Last login</div>
             <strong>{{ item.activity }}</strong> -->
