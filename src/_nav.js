@@ -11,6 +11,12 @@ export default [
   },
   {
     component: 'CNavItem',
+    name: 'Courses',
+    to: '/courses',
+    icon: 'cil-user',
+  },
+  {
+    component: 'CNavItem',
     name: 'Users',
     to: '/users',
     icon: 'cil-user',

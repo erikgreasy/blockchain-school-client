@@ -20,6 +20,21 @@ const routes = [
           import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
       },
       {
+        path: '/courses',
+        name: 'Courses.index',
+        component: () => import('@/views/courses/Index.vue'),
+      },
+      {
+        path: '/courses/id',
+        name: 'Courses.show',
+        component: () => import('@/views/courses/Show.vue'),
+      },
+      {
+        path: '/courses/create',
+        name: 'Courses.create',
+        component: () => import('@/views/courses/Create.vue'),
+      },
+      {
         path: '/users',
         name: 'Users.index',
         component: () => import('@/views/users/Index.vue'),
