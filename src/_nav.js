@@ -8,6 +8,7 @@ export default [
       color: 'primary',
       text: 'NEW',
     },
+    userRoles: ['student']
   },
   {
     component: 'CNavItem',
@@ -32,12 +33,14 @@ export default [
     name: 'E-index',
     to: '/e-index',
     icon: 'cil-notes',
+    userRoles: ['student']
   },
   {
     component: 'CNavItem',
     name: 'Môj profil',
     to: '/my-profile',
     icon: 'cil-settings',
+    userRoles: ['student']
   },
   {
     component: 'CNavTitle',
