@@ -18,6 +18,9 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () =>
           import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
+        meta: {
+          userRoles: ['student']
+        }
       },
       {
         path: '/courses',
