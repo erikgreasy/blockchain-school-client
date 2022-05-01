@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-link to="/courses/create" class="btn btn-primary mb-3">Pridať predmet</router-link
-    >
+    <router-link to="/courses/create" class="btn btn-primary mb-3">Pridať predmet</router-link>
     <CTable align="middle" class="mb-0 border" hover responsive>
       <CTableHead color="light">
         <CTableRow>
@@ -19,7 +18,7 @@
           <CTableDataCell>
             {{ item.course.acronym }}
           </CTableDataCell>
-          <CTableDataCell> {{ item.course.semester }} </CTableDataCell>
+          <CTableDataCell> {{ item.course.term }} </CTableDataCell>
           <CTableDataCell>
             <div>
               <router-link to="/courses/id" class="btn btn-sm btn-primary">
@@ -46,7 +45,7 @@ export default {
           course: {
             name: 'Databázové systémy',
             acronym: 'DBS',
-            semester: 'Letný semester',
+            term: 'Letný semester',
             garant: 'Gabo Juhás',
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
           },

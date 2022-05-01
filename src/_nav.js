@@ -22,6 +22,12 @@ export default [
     icon: 'cil-user',
   },
   {
+    component: 'CNavItem',
+    name: 'Priebežné hodnotenie',
+    to: '/results',
+    icon: 'cil-user',
+  },
+  {
     component: 'CNavTitle',
     name: 'Theme',
   },

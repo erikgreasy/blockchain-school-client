@@ -50,6 +50,16 @@ const routes = [
         component: () => import('@/views/users/Create.vue'),
       },
       {
+        path: '/results',
+        name: 'Results.index',
+        component: () => import('@/views/results/Index.vue'),
+      },
+      {
+        path: '/results/show',
+        name: 'Results.show',
+        component: () => import('@/views/results/Show.vue'),
+      },
+      {
         path: '/theme',
         name: 'Theme',
         redirect: '/theme/typography',
