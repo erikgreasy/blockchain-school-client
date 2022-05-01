@@ -50,6 +50,11 @@ const routes = [
         component: () => import('@/views/users/Create.vue'),
       },
       {
+        path: '/e-index',
+        name: 'EIndex',
+        component: () => import('@/views/EIndex.vue'),
+      },
+      {
         path: '/theme',
         name: 'Theme',
         redirect: '/theme/typography',
