@@ -65,6 +65,16 @@ const routes = [
         component: () => import('@/views/EIndex.vue'),
       },
       {
+        path: '/my-profile',
+        name: 'My profile',
+        component: () => import('@/views/MyProfile.vue'),
+      },
+      {
+        path: '/change-password',
+        name: 'Change password',
+        component: () => import('@/views/ChangePassword.vue'),
+      },
+      {
         path: '/theme',
         name: 'Theme',
         redirect: '/theme/typography',

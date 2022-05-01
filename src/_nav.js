@@ -34,6 +34,12 @@ export default [
     icon: 'cil-notes',
   },
   {
+    component: 'CNavItem',
+    name: 'Môj profil',
+    to: '/my-profile',
+    icon: 'cil-settings',
+  },
+  {
     component: 'CNavTitle',
     name: 'Theme',
   },
