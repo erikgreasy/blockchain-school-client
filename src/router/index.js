@@ -60,6 +60,11 @@ const routes = [
         component: () => import('@/views/results/Show.vue'),
       },
       {
+        path: '/e-index',
+        name: 'EIndex',
+        component: () => import('@/views/EIndex.vue'),
+      },
+      {
         path: '/theme',
         name: 'Theme',
         redirect: '/theme/typography',

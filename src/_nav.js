@@ -28,6 +28,12 @@ export default [
     icon: 'cil-user',
   },
   {
+    component: 'CNavItem',
+    name: 'E-index',
+    to: '/e-index',
+    icon: 'cil-notes',
+  },
+  {
     component: 'CNavTitle',
     name: 'Theme',
   },
