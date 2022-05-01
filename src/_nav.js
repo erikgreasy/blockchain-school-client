@@ -23,6 +23,12 @@ export default [
   },
   {
     component: 'CNavItem',
+    name: 'Priebežné hodnotenie',
+    to: '/results',
+    icon: 'cil-user',
+  },
+  {
+    component: 'CNavItem',
     name: 'E-index',
     to: '/e-index',
     icon: 'cil-notes',

@@ -12,7 +12,7 @@
               <strong>Fakulta:</strong> {{ course.faculty }}
             </CCardText>
             <CCardText>
-              <strong>Semester:</strong> {{ course.semester }}
+              <strong>Semester:</strong> {{ course.term }}
             </CCardText>
             <CCardText>
               <strong>Garant:</strong> {{ course.garant }}
@@ -40,7 +40,7 @@ export default {
             acronym: 'DBS',
             university: 'Slovenská technická univerzita',
             faculty: 'Fakulta elektrotechniky a informatiky',
-            semester: 'Letný semester',
+            term: 'Letný semester',
             garant: 'Gabo Juhás',
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
             passConditions: 'V priebehu semestra budú 4 programovacie zadania po 10 bodov, na získanie hodnotenia A je potrebné získať najmenej 92 bodov, na získanie hodnotenia B najmenej 83 bodov, na hodnotenie C najmenej 74 bodov, na hodnotenie D najmenej 65 bodov a na hodnotenie E najmenej 56 bodov. Kredity sa neudelia študentovi, ktorý zo 4 zadaní získa menej ako 20 bodov.'
