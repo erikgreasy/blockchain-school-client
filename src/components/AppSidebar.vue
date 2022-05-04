@@ -12,11 +12,12 @@
     "
   >
     <CSidebarBrand>
-      <CIcon
+      <img src="stu_logo.png" alt="Logo STU" width="100" id="stu-logo">
+      <!-- <CIcon
         custom-class-name="sidebar-brand-full"
         :icon="logoNegative"
         :height="35"
-      />
+      /> -->
       <CIcon
         custom-class-name="sidebar-brand-narrow"
         :icon="sygnet"
@@ -35,7 +36,6 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { AppSidebarNav } from './AppSidebarNav'
-import { logoNegative } from '@/assets/brand/logo-negative'
 import { sygnet } from '@/assets/brand/sygnet'
 export default {
   name: 'AppSidebar',
@@ -45,7 +45,6 @@ export default {
   setup() {
     const store = useStore()
     return {
-      logoNegative,
       sygnet,
       sidebarUnfoldable: computed(() => store.state.sidebarUnfoldable),
       sidebarVisible: computed(() => store.state.sidebarVisible),
@@ -53,3 +52,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+#stu-logo {
+  width: 120px;
+}
+</style>

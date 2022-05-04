@@ -3,7 +3,6 @@
         <div class="d-flex justify-content-between">
             <h1 class="d-inline-block">Profil Študenta</h1>
             <div>
-                <router-link to="/users/create" class="btn btn-primary mb-3 me-2">Upraviť údaje</router-link>
                 <router-link to="/change-password" class="btn btn-secondary mb-3">Zmeniť heslo</router-link>
             </div>
         </div>
