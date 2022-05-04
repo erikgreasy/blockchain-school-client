@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="mb-4">Zápis/Registrácia predmetov</h1>
     <CTable align="middle" class="mb-0 border" hover responsive>
       <CTableHead color="light">
         <CTableRow>
@@ -11,15 +12,15 @@
       <CTableBody>
         <CTableRow v-for="course in user.courses" :key="course.id">
           <CTableDataCell>
-            {{ course.name }}
+            <a href="/courses/id">{{ course.name }}</a> 
           </CTableDataCell>
           <CTableDataCell>
             {{ course.acronym }}
           </CTableDataCell>
           <CTableDataCell>
             <div>
-              <router-link to="users/current-rating/id" class="btn btn-sm btn-primary">
-                Zobraziť hodnotenie
+              <router-link to="/registration/subject_id" class="btn btn-sm btn-primary">
+                Zapísať predmet
               </router-link>
             </div>
           </CTableDataCell>
@@ -32,7 +33,7 @@
 
 <script>
 export default {
-  name: 'Users.currentRating',
+  name: 'Registration.index',
   setup() {
     return {
       user: {
