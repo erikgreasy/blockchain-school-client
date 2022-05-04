@@ -68,6 +68,11 @@ const routes = [
         component: () => import('@/views/EIndex.vue'),
       },
       {
+        path: '/subject-registration',
+        name: 'Registration.index',
+        component: () => import('@/views/registration/Index.vue'),
+      },
+      {
         path: '/my-profile',
         name: 'My profile',
         component: () => import('@/views/MyProfile.vue'),

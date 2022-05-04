@@ -43,6 +43,12 @@ export default [
     userRoles: ['student']
   },
   {
+    component: 'CNavItem',
+    name: 'Zápis/Registrácia',
+    to: '/subject-registration',
+    icon: 'cil-notes',
+  },
+  {
     component: 'CNavTitle',
     name: 'Theme',
   },
