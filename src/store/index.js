@@ -4,7 +4,7 @@ export default createStore({
   state: {
     sidebarVisible: '',
     sidebarUnfoldable: false,
-    userRole: 'student',
+    userRole: 'teacher',
   },
   mutations: {
     toggleSidebar(state) {

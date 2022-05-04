@@ -12,7 +12,7 @@
           <CNavLink href="/dashboard"> Dashboard </CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="#">Users</CNavLink>
+          <CNavLink href="#">Students</CNavLink>
         </CNavItem>
         <CNavItem>
           <CNavLink href="#">Settings</CNavLink>

@@ -38,19 +38,19 @@ const routes = [
         component: () => import('@/views/courses/Create.vue'),
       },
       {
-        path: '/users',
-        name: 'Users.index',
-        component: () => import('@/views/users/Index.vue'),
+        path: '/students',
+        name: 'Students.index',
+        component: () => import('@/views/students/Index.vue'),
       },
       {
-        path: '/users/id',
-        name: 'Users.show',
-        component: () => import('@/views/users/Show.vue'),
+        path: '/students/id',
+        name: 'Students.show',
+        component: () => import('@/views/students/Show.vue'),
       },
       {
-        path: '/users/create',
-        name: 'Users.create',
-        component: () => import('@/views/users/Create.vue'),
+        path: '/students/create',
+        name: 'Students.create',
+        component: () => import('@/views/students/Create.vue'),
       },
       {
         path: '/results',

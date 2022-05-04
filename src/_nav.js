@@ -8,7 +8,7 @@ export default [
       color: 'primary',
       text: 'NEW',
     },
-    userRoles: ['student']
+    userRoles: ['student', 'teacher']
   },
   {
     component: 'CNavItem',
@@ -18,9 +18,10 @@ export default [
   },
   {
     component: 'CNavItem',
-    name: 'Users',
-    to: '/users',
+    name: 'Students',
+    to: '/students',
     icon: 'cil-user',
+    userRoles: ['teacher'],
   },
   {
     component: 'CNavItem',
