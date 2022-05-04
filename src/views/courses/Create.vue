@@ -76,7 +76,7 @@
 import {ref} from 'vue'
 
 export default {
-    name: 'Courses.index',
+    name: 'Courses.create',
     setup() {
         const course = ref({
             name: '',

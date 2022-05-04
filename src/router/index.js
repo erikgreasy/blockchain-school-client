@@ -18,6 +18,9 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () =>
           import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
+        meta: {
+          userRoles: ['student']
+        }
       },
       {
         path: '/courses',
@@ -68,6 +71,16 @@ const routes = [
         path: '/subject-registration',
         name: 'Registration.index',
         component: () => import('@/views/registration/Index.vue'),
+      },
+      {
+        path: '/my-profile',
+        name: 'My profile',
+        component: () => import('@/views/MyProfile.vue'),
+      },
+      {
+        path: '/change-password',
+        name: 'Change password',
+        component: () => import('@/views/ChangePassword.vue'),
       },
       {
         path: '/theme',
