@@ -31,9 +31,26 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'Courses.show',
-  setup() {
+  // setup() {
+  //   // await axios.get('http://ais.reydifox.eu:5000/courses/1')
+  //   // console.log(course)
+  //   return {
+  //       course: {
+  //           name: 'Databázové systémy',
+  //           acronym: 'DBS',
+  //           university: 'Slovenská technická univerzita',
+  //           faculty: 'Fakulta elektrotechniky a informatiky',
+  //           term: 'Letný semester',
+  //           garant: 'Gabo Juhás',
+  //           description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
+  //           passConditions: 'V priebehu semestra budú 4 programovacie zadania po 10 bodov, na získanie hodnotenia A je potrebné získať najmenej 92 bodov, na získanie hodnotenia B najmenej 83 bodov, na hodnotenie C najmenej 74 bodov, na hodnotenie D najmenej 65 bodov a na hodnotenie E najmenej 56 bodov. Kredity sa neudelia študentovi, ktorý zo 4 zadaní získa menej ako 20 bodov.'
+  //       },
+  //   }
+  // }
+  data() {
     return {
         course: {
             name: 'Databázové systémy',
@@ -46,6 +63,17 @@ export default {
             passConditions: 'V priebehu semestra budú 4 programovacie zadania po 10 bodov, na získanie hodnotenia A je potrebné získať najmenej 92 bodov, na získanie hodnotenia B najmenej 83 bodov, na hodnotenie C najmenej 74 bodov, na hodnotenie D najmenej 65 bodov a na hodnotenie E najmenej 56 bodov. Kredity sa neudelia študentovi, ktorý zo 4 zadaní získa menej ako 20 bodov.'
         },
     }
+  },
+
+  methods: {
+    async getCourse() {
+      const res = await axios.get('http://ais.reydifox.eu:5000/courses/1')
+      console.log(res)
+    }
+  },
+
+  mounted() {
+    this.getCourse()
   }
 }
 </script>
