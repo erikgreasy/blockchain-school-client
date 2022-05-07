@@ -11,17 +11,17 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="item in tableExample" :key="item.course.name">
+        <CTableRow v-for="item in courses" :key="item.id">
           <CTableDataCell>
-            <div>{{ item.course.name }}</div>
+            <div>{{ item.name }}</div>
           </CTableDataCell>
           <CTableDataCell>
-            {{ item.course.acronym }}
+            {{ item.acronym }}
           </CTableDataCell>
-          <CTableDataCell> {{ item.course.term }} </CTableDataCell>
+          <CTableDataCell> {{ item.term }} </CTableDataCell>
           <CTableDataCell>
             <div>
-              <router-link to="/courses/id" class="btn btn-sm btn-primary">
+              <router-link :to="`/courses/${item.id}`" class="btn btn-sm btn-primary">
                 Zobraziť detail
               </router-link>
             </div>
@@ -36,75 +36,28 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { onMounted, ref } from 'vue'
+
 export default {
   name: 'Courses.index',
   setup() {
+    var courses = ref()
+
+
+    const getCourses = async function() {
+      const res = await axios.get('courses')
+      courses.value = res.data
+      console.log(res)
+    }
+
+    onMounted(() => {
+      getCourses()
+    })
+    
     return {
-        tableExample: [
-        {
-          course: {
-            name: 'Databázové systémy',
-            acronym: 'DBS',
-            term: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-        {
-          course: {
-            name: 'Programovanie 1',
-            acronym: 'PROG1',
-            semester: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-        {
-          course: {
-            name: 'Automaty a formálne jazyky',
-            acronym: 'AFJ',
-            semester: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-        {
-          course: {
-            name: 'Algoritmy a dátové štruktúry',
-            acronym: 'ADS',
-            semester: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-        {
-          course: {
-            name: 'Bezpečnosť informačných systémov',
-            acronym: 'BIS',
-            semester: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-        {
-          course: {
-            name: 'Reprezentacia a získavanie znalostí',
-            acronym: 'RZZ',
-            semester: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-        {
-          course: {
-            name: 'Paralelné programovanie a dist. systémy',
-            acronym: 'PPDS',
-            semester: 'Letný semester',
-            garant: 'Gabo Juhás',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-          },
-        },
-      ]
+      getCourses,
+      courses,
     }
   },
 }
