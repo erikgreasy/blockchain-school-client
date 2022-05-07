@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Profil Študenta</h1>
+    <h1>Profil študenta</h1>
     <CCard>
       <CCardBody>
         <CRow>
@@ -11,13 +11,13 @@
               :src="student.avatar.src"
               :status="student.avatar.status"
             /> -->
-            <h2>{{ `${student.firstName} ${student.lastName}` }}</h2>
-            <p><strong>ID:</strong> {{ student.uniqueId }}</p>
+            <h2>{{ `${student.first_name} ${student.last_name}` }}</h2>
+            <p><strong>ID:</strong> {{ student.id }}</p>
           </CCol>
 
           <CCol md="8">
             <CCardTitle> Osobné údaje </CCardTitle>
-            <CCardText> <strong>Meno:</strong> {{ `${student.firstName} ${student.lastName}` }} </CCardText>
+            <CCardText> <strong>Meno:</strong> {{ `${student.first_name} ${student.last_name}` }} </CCardText>
             <CCardText> <strong>Email:</strong> {{ student.email }} </CCardText>
             <CCardText>
               <strong>Sukromný email:</strong> {{ student.privateEmail }}
@@ -25,30 +25,30 @@
             <hr>
             <CCardTitle> Adresa </CCardTitle>
             <CCardText>
-              <strong>Krajina:</strong> {{ student.adress.country }}
+              <strong>Krajina:</strong> 
             </CCardText>
             <CCardText>
-              <strong>Mesto:</strong> {{ student.adress.city }}
+              <strong>Mesto:</strong> 
             </CCardText>
             <CCardText>
-              <strong>PSČ:</strong> {{ student.adress.postalCode }}
+              <strong>PSČ:</strong>
             </CCardText>
             <CCardText>
-              <strong>Ulica a číslo:</strong> {{ `${student.adress.street} ${student.adress.houseNumber}` }}
+              <strong>Ulica a číslo:</strong> 
             </CCardText>
             <hr />
             <CCardTitle> Štúdium </CCardTitle>
             <CCardText>
-              <strong>Fakulta:</strong> {{ student.study.faculty }}
+              <strong>Fakulta:</strong> 
             </CCardText>
             <CCardText>
-              <strong>Odbor:</strong> {{ student.study.programme }}
+              <strong>Odbor:</strong> {{ student.study_programme }}
             </CCardText>
             <CCardText>
-              <strong>Forma:</strong> {{ student.study.form }}
+              <strong>Forma:</strong> {{ student.study_form }}
             </CCardText>
             <CCardText>
-              <strong>Titul:</strong> {{ student.academicDegree }}
+              <strong>Titul:</strong> 
             </CCardText>
           </CCol>
         </CRow>
@@ -58,33 +58,28 @@
 </template>
 
 <script>
-import avatar1 from '@/assets/images/avatars/1.jpg'
+import axios from 'axios'
+import { useRoute } from 'vue-router'
+import { onMounted, ref } from 'vue'
 
 export default {
   name: 'Students.show',
   setup() {
+    var student = ref({})
+
+    const route = useRoute()
+    const getStudent = async () => {
+      const res = await axios.get(`students/${route.params.id}`)
+      console.log(res)
+      student.value = res.data
+    }
+
+    onMounted(() => {
+      getStudent()
+    })
+    
     return {
-      student: {
-        avatar: { src: avatar1, status: 'success' },
-        firstName: 'Yiorgos',
-        lastName: 'Avraamu',
-        email: 'xibrahim@stuba.sk',
-        privateEmail: 'ibrahim@gmail.com',
-        uniqueId: '123456',
-        academicDegree: 'Bc.',
-        study: {
-          faculty: 'FEI',
-          programme: 'Aplikovaná informatika',
-          form: 'Denná',
-        },
-        adress: {
-          street: 'Moskovska',
-          houseNumber: '23',
-          city: 'Zilina',
-          postalCode: '50648',
-          country: 'Slovensko',
-        },
-      },
+      student
     }
   },
 }
