@@ -4,10 +4,6 @@ export default [
     name: 'Dashboard',
     to: '/dashboard',
     icon: 'cil-speedometer',
-    badge: {
-      color: 'primary',
-      text: 'NEW',
-    },
     userRoles: ['student', 'teacher', 'admin']
   },
   {
