@@ -39,7 +39,7 @@ export default {
     var students = ref()
 
     const getUsers = async () => {
-      const res = await axios.get('students')
+      const res = await axios.get('users')
       console.log(res)
       students.value = res.data
     }

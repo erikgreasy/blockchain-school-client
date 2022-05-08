@@ -23,6 +23,11 @@ const routes = [
         }
       },
       {
+        path: '/my-courses',
+        name: 'Moje predmety',
+        component: () => import('@/views/teacher_courses/Index.vue'),
+      },
+      {
         path: '/courses',
         name: 'Courses.index',
         component: () => import('@/views/courses/Index.vue'),
@@ -33,6 +38,11 @@ const routes = [
         component: () => import('@/views/courses/Show.vue'),
       },
       {
+        path: '/courses/:id/students',
+        name: 'Študenti na predmete',
+        component: () => import('@/views/courses/ShowStudents.vue'),
+      },
+      {
         path: '/courses/create',
         name: 'Courses.create',
         component: () => import('@/views/courses/Create.vue'),
@@ -41,6 +51,11 @@ const routes = [
         path: '/students',
         name: 'Students.index',
         component: () => import('@/views/students/Index.vue'),
+      },
+      {
+        path: '/students/:student_id/courses/:course_id/points',
+        name: 'Hodnotenie študenta',
+        component: () => import('@/views/students/Points.vue'),
       },
       {
         path: '/students/:id',

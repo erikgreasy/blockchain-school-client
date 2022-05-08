@@ -15,10 +15,17 @@ export default [
   },
   {
     component: 'CNavItem',
+    name: 'Moje predmety',
+    to: '/my-courses',
+    icon: 'cil-book',
+    userRoles: ['teacher']
+  },
+  {
+    component: 'CNavItem',
     name: 'Študenti',
     to: '/students',
     icon: 'cil-user',
-    userRoles: ['teacher'],
+    userRoles: [''],
   },
   {
     component: 'CNavItem',
