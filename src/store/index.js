@@ -4,7 +4,7 @@ export default createStore({
   state: {
     sidebarVisible: '',
     sidebarUnfoldable: false,
-    loggedUser: null
+    loggedUser: JSON.parse(sessionStorage.getItem('loggedUser')) || null
   },
   mutations: {
     toggleSidebar(state) {
@@ -17,9 +17,11 @@ export default createStore({
       state.sidebarVisible = payload.value
     },
     logginUser(state, payload) {
+      sessionStorage.setItem('loggedUser', JSON.stringify(payload));
       state.loggedUser = payload
     },
     logoutUser(state) {
+      sessionStorage.removeItem('loggedUser');
       state.loggedUser = null
     }
   },
