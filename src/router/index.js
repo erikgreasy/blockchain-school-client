@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import DefaultLayout from '@/layouts/DefaultLayout'
+import store from '@/store'
 
 const routes = [
   {
@@ -50,6 +51,21 @@ const routes = [
         path: '/students/create',
         name: 'Students.create',
         component: () => import('@/views/students/Create.vue'),
+      },
+      {
+        path: '/users',
+        name: 'Používatelia',
+        component: () => import('@/views/users/Index.vue'),
+      },
+      {
+        path: '/users/:id',
+        name: 'Detail',
+        component: () => import('@/views/users/Show.vue'),
+      },
+      {
+        path: '/users/create',
+        name: 'Vytvoriť nového',
+        component: () => import('@/views/users/Create.vue'),
       },
       {
         path: '/results',
@@ -102,6 +118,26 @@ const router = createRouter({
     // always scroll to top
     return { top: 0 }
   },
+})
+
+router.beforeEach(async (to) => {
+  if (
+    // make sure the user is authenticated
+    store.state.loggedUser == null &&
+    to.name !== 'Login'
+  ) {
+    // redirect the user to the login page
+    return {name: 'Login'}
+  }
+
+  if (
+    // make sure the user is authenticated
+    store.state.loggedUser !== null &&
+    to.name === 'Login'
+  ) {
+    // redirect the user to the login page
+    return {name: 'Dashboard'}
+  }
 })
 
 export default router

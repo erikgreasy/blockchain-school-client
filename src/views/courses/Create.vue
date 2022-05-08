@@ -74,6 +74,8 @@
 
 <script>
 import {ref} from 'vue'
+import axios from 'axios'
+import router from '@/router'
 
 export default {
     name: 'Courses.create',
@@ -87,9 +89,13 @@ export default {
             passConditions: '',
         })
 
-        const submitForm = function() {
-            console.log(course)
-            alert('submit')
+        const submitForm = async function() {
+            const res = await axios.post('courses', course)
+            console.log(res)
+
+            if( res.status === 200 ) {
+                router.push('/courses')
+            }
         }
 
         return {

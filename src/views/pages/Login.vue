@@ -44,13 +44,26 @@
 </template>
 
 <script>
-import router from '@/router'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default {
-  name: 'Login',
-  methods: {
-    login() {
+  setup() {
+
+    const store = useStore()
+    const router = useRouter()
+
+    const login = () => {
+      store.commit('logginUser', {
+        id: 1,
+        name: 'Meno Priezvisko',
+        role: 'student',
+      })
       router.push('/')
+    }
+
+    return {
+      login
     }
   }
 }

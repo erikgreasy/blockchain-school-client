@@ -8,20 +8,28 @@ export default [
       color: 'primary',
       text: 'NEW',
     },
-    userRoles: ['student', 'teacher']
+    userRoles: ['student', 'teacher', 'admin']
   },
   {
     component: 'CNavItem',
-    name: 'Courses',
+    name: 'Predmety',
     to: '/courses',
-    icon: 'cil-user',
+    icon: 'cil-book',
+    userRoles: ['admin']
   },
   {
     component: 'CNavItem',
-    name: 'Students',
+    name: 'Študenti',
     to: '/students',
     icon: 'cil-user',
     userRoles: ['teacher'],
+  },
+  {
+    component: 'CNavItem',
+    name: 'Používatelia',
+    to: '/users',
+    icon: 'cil-user',
+    userRoles: ['admin'],
   },
   {
     component: 'CNavItem',
@@ -39,16 +47,16 @@ export default [
   },
   {
     component: 'CNavItem',
-    name: 'Môj profil',
-    to: '/my-profile',
-    icon: 'cil-settings',
-    userRoles: ['student']
-  },
-  {
-    component: 'CNavItem',
     name: 'Zápis/Registrácia',
     to: '/subject-registration',
     icon: 'cil-notes',
     userRoles: ['student']
+  },
+  {
+    component: 'CNavItem',
+    name: 'Môj profil',
+    to: '/my-profile',
+    icon: 'cil-settings',
+    userRoles: ['*']
   },
 ]
