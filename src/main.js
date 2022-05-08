@@ -10,7 +10,7 @@ import { iconsSet as icons } from '@/assets/icons'
 import DocsCallout from '@/components/DocsCallout'
 import DocsExample from '@/components/DocsExample'
 
-axios.defaults.baseURL = 'http://ais.reydifox.eu:5000/';
+axios.defaults.baseURL = 'https://ais.reydifox.eu:5000/';
 
 const app = createApp(App)
 app.config.globalProperties.$axios = axios
