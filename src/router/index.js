@@ -325,6 +325,11 @@ const routes = [
     ],
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/pages/Login'),
+  },
+  {
     path: '/pages',
     redirect: '/pages/404',
     name: 'Pages',
@@ -343,11 +348,6 @@ const routes = [
         path: '500',
         name: 'Page500',
         component: () => import('@/views/pages/Page500'),
-      },
-      {
-        path: 'login',
-        name: 'Login',
-        component: () => import('@/views/pages/Login'),
       },
       {
         path: 'register',
