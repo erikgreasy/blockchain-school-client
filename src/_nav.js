@@ -1,7 +1,7 @@
 export default [
   {
     component: 'CNavItem',
-    name: 'Dashboard',
+    name: 'Domov',
     to: '/dashboard',
     icon: 'cil-speedometer',
     userRoles: ['student', 'teacher', 'admin']
