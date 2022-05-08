@@ -89,7 +89,7 @@
                     <hr class="my-5">
 
                     <h2 class="text-center my-3">Adresa</h2>
-                    <CRow>
+                    <!-- <CRow>
                         <CCol xs>
                             <div class="mb-3">
                                 <CFormLabel for="street">Ulica</CFormLabel>
@@ -124,7 +124,7 @@
                                 <CFormInput type="text" v-model="student.address.country" id="country" />
                             </div>
                         </CCol>
-                    </CRow>
+                    </CRow> -->
                 
                     <div class="d-grid">
                         <CButton type="submit" color="primary">Uložiť</CButton>
@@ -137,24 +137,34 @@
 
 <script>
 import {ref} from 'vue'
+import axios from 'axios'
 
 export default {
     name: 'Students.create',
     setup() {
         const student = ref({
-            name: '',
-            surname: '',
-            email: '',
-            privateEmail: '',
-            address: {
-                street: '',
-                houseNumber: '',
-            }
+            user_type: "student",
+            first_name: "Marek",
+            last_name: "Drab",
+            email: "xdrabm@stuba.sk",
+            academic_degree: "Bc.",
+            private_email: "marek.drablp@gmail.com",
+            address_id: null
+            // first_name: '',
+            // last_name: '',
+            // email: '',
+            // private_email: '',
+            // address: {
+            //     street: '',
+            //     houseNumber: '',
+            // }
         })
 
-        const submitForm = function() {
-            console.log(student)
-            alert('submit')
+        const submitForm = async () => {
+            console.log(student.value)
+            // alert('submit')
+            const res = await axios.post('students', student)
+            console.log(res)
         }
 
         return {
