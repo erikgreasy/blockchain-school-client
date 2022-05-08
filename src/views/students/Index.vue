@@ -12,14 +12,17 @@
       <CTableBody>
         <CTableRow v-for="item in students" :key="item.id">
           <CTableDataCell>
-            <div>{{ item.first_name + ' ' + item.last_name }}</div>
+            <div>
+              {{ item.academic_degree + ' ' || '' }}
+              {{ item.first_name + ' ' + item.last_name }}</div>
           </CTableDataCell>
           <CTableDataCell>
             {{ item.study_type }}-{{ item.study_programme }}
           </CTableDataCell>
           <CTableDataCell class="text-center">
             <div>
-              <router-link :to="`/students/${item.id}`" class="btn btn-sm btn-primary">Zobraziť detail</router-link>
+              <router-link :to="`/students/${item._id}`" class="btn btn-sm btn-primary me-1">Zobraziť detail</router-link>
+              <a href="#" @click.prevent="deleteUser(item._id)" class="btn btn-sm btn-danger">Odstrániť</a>
             </div>
           </CTableDataCell>
         </CTableRow>
@@ -44,6 +47,15 @@ export default {
       students.value = res.data
     }
 
+    const deleteUser = async (student_id) => {
+      if( ! confirm('Naozaj chcete odstrániť?') ) return
+      
+      const res = await axios.delete(`students/${student_id}`)
+      console.log(res)
+
+      getStudents()
+    }
+
     onMounted(() => {
       getStudents()
     })
@@ -51,6 +63,7 @@ export default {
 
     return {
       students,
+      deleteUser,
     }
   }
 }
