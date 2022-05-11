@@ -10,7 +10,7 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="item in students" :key="item.id">
+        <CTableRow v-for="item in students" :key="item._id">
           <CTableDataCell>
             <div>
               {{ item.academic_degree + ' ' || '' }}

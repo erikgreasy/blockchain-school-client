@@ -34,16 +34,16 @@
             <hr>
             <CCardTitle> Adresa </CCardTitle>
             <CCardText>
-              <strong>Krajina:</strong> 
+              <strong>Krajina:</strong> {{ student.address?.county }}
             </CCardText>
             <CCardText>
-              <strong>Mesto:</strong> 
+              <strong>Mesto:</strong> {{ student.address?.city }}
             </CCardText>
             <CCardText>
-              <strong>PSČ:</strong>
+              <strong>PSČ:</strong> {{ student.address?.postal_code }}
             </CCardText>
             <CCardText>
-              <strong>Ulica a číslo:</strong> 
+              <strong>Ulica a číslo:</strong> {{ student.address?.steet }} {{ student.address?.house_number }}
             </CCardText>
             <hr />
             <CCardTitle> Štúdium </CCardTitle>
