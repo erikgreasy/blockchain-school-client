@@ -40,7 +40,7 @@ export default {
     const getStudent = async () => {
       const res = await axios.get(`/results/${route.params.course_id}/${route.params.student_id}`)
       console.log(res)
-      gradingRecords.value = res.data
+      gradingRecords.value = res.data.grading_records
     }
 
     onMounted(() => {
