@@ -28,6 +28,11 @@ const routes = [
         component: () => import('@/views/teacher_courses/Index.vue'),
       },
       {
+        path: '/courses/:id/edit',
+        name: 'Upraviť predmet',
+        component: () => import('@/views/teacher_courses/Edit.vue'),
+      },
+      {
         path: '/courses',
         name: 'Courses.index',
         component: () => import('@/views/courses/Index.vue'),
