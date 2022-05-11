@@ -10,7 +10,7 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="item in students" :key="item.id">
+        <CTableRow v-for="item in students" :key="item._id">
           <CTableDataCell>
             <div>{{ item.first_name + ' ' + item.last_name }}</div>
           </CTableDataCell>
@@ -19,7 +19,7 @@
           </CTableDataCell>
           <CTableDataCell class="text-center">
             <div>
-              <router-link :to="`/users/${item.id}`" class="btn btn-sm btn-primary">Zobraziť detail</router-link>
+              <router-link :to="`/users/${item._id}`" class="btn btn-sm btn-primary">Zobraziť detail</router-link>
             </div>
           </CTableDataCell>
         </CTableRow>

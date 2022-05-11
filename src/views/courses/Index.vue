@@ -11,7 +11,7 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="item in courses" :key="item.id">
+        <CTableRow v-for="item in courses" :key="item._id">
           <CTableDataCell>
             <div>{{ item.name }}</div>
           </CTableDataCell>
@@ -21,10 +21,10 @@
           <CTableDataCell> {{ item.term }} </CTableDataCell>
           <CTableDataCell>
             <div class="d-flex align-items-center justify-content-center">
-              <router-link :to="`/courses/${item.id}`" class="btn btn-sm btn-primary me-3">
+              <router-link :to="`/courses/${item._id}`" class="btn btn-sm btn-primary me-3">
                 Zobraziť detail
               </router-link>
-              <a href="#" @click.prevent="deleteCourse(item.id)" class="text-danger">
+              <a href="#" @click.prevent="deleteCourse(item._id)" class="text-danger">
                 <CIcon :icon="cilTrash" size="md"/>
               </a>
             </div>
