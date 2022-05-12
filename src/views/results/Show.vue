@@ -9,7 +9,7 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="record in gradingRecord" :key="record.name">
+        <CTableRow v-for="record in gradingRecords" :key="record.name">
           <CTableDataCell>
             {{ record.name }}
           </CTableDataCell>
@@ -27,27 +27,28 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { useRoute } from 'vue-router'
+import { onMounted, ref } from 'vue'
+
 export default {
   name: 'Results.show',
   setup() {
+    var gradingRecords = ref({})
+
+    const route = useRoute()
+    const getStudent = async () => {
+      const res = await axios.get(`/results/${route.params.course_id}/${route.params.student_id}`)
+      console.log(res)
+      gradingRecords.value = res.data.grading_records
+    }
+
+    onMounted(() => {
+      getStudent()
+    })
+    
     return {
-      gradingRecord: [
-        {
-          name: 'Test 1',
-          points: '14',
-          created: '1.1.2022',
-        },
-        {
-          name: 'Test 2',
-          points: '18',
-          created: '18.2.2022',
-        },
-        {
-          name: 'Test 3',
-          points: '15',
-          created: '10.13.2022',
-        },
-      ],
+      gradingRecords
     }
   },
 }
