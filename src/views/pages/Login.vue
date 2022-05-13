@@ -57,7 +57,7 @@ export default {
       store.commit('logginUser', {
         id: 1,
         name: 'Meno Priezvisko',
-        role: 'student',
+        role: 'admin',
       })
       router.push('/')
     }
