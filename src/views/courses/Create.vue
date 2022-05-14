@@ -81,7 +81,7 @@
               />
             </div>
           </CRow> -->
-
+          {{roles}}
           <div class="d-grid">
             <CButton type="submit" color="primary">Uložiť</CButton>
           </div>
@@ -109,7 +109,7 @@ export default {
     })
 
     const submitForm = async function () {
-      const res = await axios.post('courses', course)
+      const res = await axios.post('courses', course.value)
       console.log(res.data)
 
       if (res.status === 200) {

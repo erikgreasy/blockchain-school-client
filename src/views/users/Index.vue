@@ -20,7 +20,10 @@
           </CTableDataCell>
           <CTableDataCell class="text-center">
             <div>
-              <router-link :to="`/users/${item._id}`" class="btn btn-sm btn-primary">Zobraziť detail</router-link>
+              <router-link :to="`/users/${item._id}`" class="btn btn-sm btn-primary me-2">Zobraziť detail</router-link>
+              <a href="#" @click.prevent="deleteUser(item._id)" class="text-danger">
+                <CIcon :icon="cilTrash" size="md"/>
+              </a>
             </div>
           </CTableDataCell>
         </CTableRow>
@@ -32,6 +35,8 @@
 
 <script>
 import axios from 'axios'
+import CIcon from '@coreui/icons-vue'
+import { cilTrash } from '@coreui/icons'
 import { onMounted, ref } from 'vue'
 
 export default {
@@ -45,6 +50,16 @@ export default {
       students.value = res.data
     }
 
+    const deleteUser = async (user_id) => {
+      if( ! confirm('Naozaj chcete odstrániť používateľa?') ) return
+
+      const res = await axios.delete(`users/${user_id}`)
+
+      console.log(res)
+
+      getUsers()
+    }
+
     onMounted(() => {
       getUsers()
     })
@@ -52,6 +67,9 @@ export default {
 
     return {
       students,
+      CIcon, 
+      cilTrash,
+      deleteUser,
     }
   }
 }

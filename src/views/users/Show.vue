@@ -76,7 +76,7 @@ export default {
     var student = ref({})
 
     const route = useRoute()
-    const getStudent = async () => {
+    const getStudent = async () => {      
       const res = await axios.get(`users/${route.params.id}`)
       console.log(res)
       student.value = res.data

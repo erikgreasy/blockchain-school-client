@@ -3,18 +3,22 @@
         <CCard class="mb-4">
             <CCardBody>
                 <CForm @submit.prevent="submitForm">
+                    <CFormSelect size="sm" class="mb-3" aria-label="Small select example" v-model="user.user_role_id">
+                        <option>Vyberte user rolu:</option>
+                        <option :value="role._id" v-for="role in roles" :key="role._id">{{ role.name }}</option>
+                    </CFormSelect>
                     <h2 class="mb-3 text-center">Osobné údaje</h2>
                     <CRow>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="name">Meno</CFormLabel>
-                                <CFormInput type="text" v-model="user.first_name" id="name" />
+                                <CFormLabel for="first_name">Meno</CFormLabel>
+                                <CFormInput type="text" v-model="user.first_name" id="first_name" />
                             </div>
                         </CCol>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="surname">Priezvisko</CFormLabel>
-                                <CFormInput type="text" v-model="user.last_name" id="surname" />
+                                <CFormLabel for="last_name">Priezvisko</CFormLabel>
+                                <CFormInput type="text" v-model="user.last_name" id="last_name" />
                             </div>
                         </CCol>
                     </CRow>
@@ -87,8 +91,9 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import axios from 'axios'
+import router from '@/router'
 
 export default {
     name: 'users.create',
@@ -104,18 +109,37 @@ export default {
                 house_number: '',
                 city: '',
                 country: '',
-            }
+            },
+            user_role_id: null,
+            user_type: 'faculty_member',
         })
 
+        const roles = ref([])
+
+
+
         const submitForm = async () => {
-            const res = await axios.post('users', user)
+            const res = await axios.post('users', user.value)
             
             console.log(res)
+
+            router.push('/users')
         }
+
+        const getRoles = async () => {
+            const res = await axios.get('roles')
+            console.log(res)
+            roles.value = res.data
+        }
+
+        onMounted(() => {
+            getRoles()
+        })
 
         return {
             user,
-            submitForm
+            submitForm,
+            roles,
         }
     }
 }
