@@ -15,7 +15,7 @@
             <div>{{ item.first_name + ' ' + item.last_name }}</div>
           </CTableDataCell>
           <CTableDataCell>
-            {{ item.user_type }}
+            {{ item.user_role?.name }}
             <!-- {{ item.study_type }}-{{ item.study_programme }} --> 
           </CTableDataCell>
           <CTableDataCell class="text-center">

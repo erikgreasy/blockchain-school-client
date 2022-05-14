@@ -6,22 +6,12 @@
         <CRow>
           <CCol md="4">
             <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="">
-            <!-- <CAvatar
-              size="xl"
-              :src="student.avatar.src"
-              :status="student.avatar.status"
-            /> -->
-            <h2>{{ `${student.first_name} ${student.last_name}` }}</h2>
+            <h2>{{ `${student.academic_degree} ${student.first_name} ${student.last_name}` }}</h2>
             <div>
-                <CBadge 
-                    v-for="role in student.user_roles" :key="role.id" 
-                    color="primary"
-                    class="me-1"
-                >
-                    {{ role.name }}
+              <CBadge color="primary">
+                  {{ student.user_role?.name }}
                 </CBadge>
             </div>
-            <p><strong>ID:</strong> {{ student.id }}</p>
           </CCol>
 
           <CCol md="8">
@@ -34,7 +24,7 @@
             <hr>
             <CCardTitle> Adresa </CCardTitle>
             <CCardText>
-              <strong>Krajina:</strong> {{ student.address?.county }}
+              <strong>Krajina:</strong> {{ student.address?.country }}
             </CCardText>
             <CCardText>
               <strong>Mesto:</strong> {{ student.address?.city }}
@@ -47,7 +37,7 @@
             </CCardText>
             <hr />
             <CCardTitle> Štúdium </CCardTitle>
-            <CCardText>
+            <!--<CCardText>
               <strong>Fakulta:</strong> 
             </CCardText>
             <CCardText>
@@ -55,9 +45,9 @@
             </CCardText>
             <CCardText>
               <strong>Forma:</strong> {{ student.study_form }}
-            </CCardText>
+            </CCardText>-->
             <CCardText>
-              <strong>Titul:</strong> 
+              <strong>Titul:</strong> {{ student.academic_degree }}
             </CCardText>
           </CCol>
         </CRow>
