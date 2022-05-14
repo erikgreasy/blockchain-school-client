@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-link to="/courses/create" class="btn btn-primary mb-3">Pridať predmet</router-link>
     <CTable align="middle" class="mb-0 border" hover responsive>
       <CTableHead color="light">
         <CTableRow>
@@ -41,25 +40,17 @@ import { cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-vue'
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   setup() {
     var courses = ref()
-
+    const store = useStore()
 
     const getCourses = async function() {
       const res = await axios.get('courses')
-      courses.value = res.data
+      courses.value = res.data.filter(el => (el?.garant_id == store.state.loggedUser._id || el?.teacher_id == store.state.loggedUser._id))
       console.log(res)
-    }
-
-    const deleteCourse = async (course_id) => {
-      if( !confirm('Naozaj si prajete odstrániť predmet?') ) return
-
-      const res = await axios.delete(`courses/${course_id}`)
-
-      console.log(res)
-      getCourses()
     }
 
     onMounted(() => {
@@ -69,7 +60,6 @@ export default {
     return {
       getCourses,
       courses,
-      deleteCourse,
       CIcon,
       cilTrash
     }

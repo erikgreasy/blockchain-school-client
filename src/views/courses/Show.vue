@@ -7,12 +7,8 @@
                     <CCol md="9">
                         <CCardText> <strong>Predmet:</strong> {{ course.name }} </CCardText>
                         <CCardText> <strong>Kód predmetu:</strong> {{ course.acronym }} </CCardText>
-                        <CCardText> <strong>Univerzita:</strong> {{ course.university }} </CCardText>
                         <CCardText>
-                            <strong>Fakulta:</strong> {{ course.faculty }}
-                        </CCardText>
-                        <CCardText>
-                            <strong>Semester:</strong> {{ course.term }}
+                            <strong>Semester:</strong> {{ course.trimester }}
                         </CCardText>
                         <CCardText>
                             <strong>Garant:</strong> {{ course.garant }}

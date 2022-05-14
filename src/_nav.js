@@ -9,6 +9,13 @@ export default [
   {
     component: 'CNavItem',
     name: 'Predmety',
+    to: '/courses/garant',
+    icon: 'cil-book',
+    userRoles: ['course garant']
+  },
+  {
+    component: 'CNavItem',
+    name: 'Predmety',
     to: '/courses',
     icon: 'cil-book',
     userRoles: ['system admin']

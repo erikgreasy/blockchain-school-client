@@ -23,6 +23,11 @@ const routes = [
         }
       },
       {
+        path: '/courses/garant',
+        name: 'Garantove predmety',
+        component: () => import('@/views/garant/Courses.vue'),
+      },
+      {
         path: '/my-courses',
         name: 'Moje predmety',
         component: () => import('@/views/teacher_courses/Index.vue'),
