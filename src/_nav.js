@@ -11,14 +11,14 @@ export default [
     name: 'Predmety',
     to: '/courses',
     icon: 'cil-book',
-    userRoles: ['admin']
+    userRoles: ['system admin']
   },
   {
     component: 'CNavItem',
     name: 'Moje predmety',
     to: '/my-courses',
     icon: 'cil-book',
-    userRoles: ['teacher']
+    userRoles: ['lecturer']
   },
   {
     component: 'CNavItem',
@@ -32,7 +32,7 @@ export default [
     name: 'Používatelia',
     to: '/users',
     icon: 'cil-user',
-    userRoles: ['admin'],
+    userRoles: ['system admin'],
   },
   {
     component: 'CNavItem',

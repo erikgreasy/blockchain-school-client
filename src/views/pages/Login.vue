@@ -67,8 +67,11 @@ export default {
       console.log(res.data.successful == 'True')
       if(res.data.successful == 'True') {
 
-        console.log(res.data)
-        store.commit('logginUser', res.data.user)
+        // console.log(res.data)
+        const user_res = await axios.get(`users/${res.data.user._id}`)
+
+        console.log(user_res.data)
+        store.commit('logginUser', user_res.data)
         router.push('/')
       } else {
         alert('Prihlasovacie údaje sú nesprávne')

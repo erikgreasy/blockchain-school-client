@@ -52,7 +52,7 @@ const AppSidebarNav = defineComponent({
   },
   setup() {
     const store = useStore()
-    const userRole = store.state.loggedUser.role
+    const userRole = store.state.loggedUser.user_role.name.toLowerCase()
 
     const route = useRoute()
     const firstRender = ref(true)
@@ -62,6 +62,7 @@ const AppSidebarNav = defineComponent({
     })
 
     const renderItem = (item) => {
+      console.log(userRole)
       if( ! item.userRoles || 
           ( ! item.userRoles.includes(userRole) && !item.userRoles.includes('*') )
       ) return
