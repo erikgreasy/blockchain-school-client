@@ -23,16 +23,9 @@
             <CCol xs>
               <div class="mb-3">
                 <CFormLabel for="garant_id">Garant predmetu</CFormLabel>
-                <CFormSelect
-                  id="garant_id"
-                  aria-label="Default select example"
-                  :options="[
-                    'Vyberte garanta',
-                    { label: 'Gabriel Juhas', value: 'gabriel_juhas' },
-                    { label: 'Pavol Zajac', value: 'pavol_zajac' },
-                    { label: 'Martin Nehez', value: 'martin_nehez' },
-                  ]"
-                >
+                <CFormSelect size="sm" class="mb-3" aria-label="Small select example" v-model="course.garant_id">
+                        <option>Vyberte garanta:</option>
+                        <option :value="garant._id" v-for="garant in garants" :key="garant._id">{{ garant.first_name + ' ' + garant.last_name }}</option>
                 </CFormSelect>
               </div>
             </CCol>
@@ -81,7 +74,6 @@
               />
             </div>
           </CRow> -->
-          {{roles}}
           <div class="d-grid">
             <CButton type="submit" color="primary">Uložiť</CButton>
           </div>
@@ -92,15 +84,16 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import router from '@/router'
 
 export default {
   name: 'Courses.create',
   setup() {
+
     const course = ref({
-      garant_id: null,
+      garant_id: '',
       name: '',
       acronym: '',
       description: '',
@@ -110,14 +103,27 @@ export default {
 
     const submitForm = async function () {
       const res = await axios.post('courses', course.value)
-      console.log(res.data)
+      // console.log(res.data)
 
       if (res.status === 200) {
         router.push('/courses')
       }
     }
 
+    const garants = ref([])
+
+    const getGarants = async () => {
+        const res = await axios.get('users')
+        console.log(res)
+        garants.value = res.data.filter(el => el.user_role?.name == "Course garant")
+    }
+
+    onMounted(() => {
+        getGarants()
+    })
+
     return {
+      garants,
       course,
       submitForm,
     }
