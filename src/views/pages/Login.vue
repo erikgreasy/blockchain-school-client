@@ -14,8 +14,9 @@
                       <CIcon icon="cil-user" />
                     </CInputGroupText>
                     <CFormInput
-                      placeholder="Prihl. meno"
-                      autocomplete="username"
+                      type="email"
+                      placeholder="Email"
+                      v-model="user.email"
                     />
                   </CInputGroup>
                   <CInputGroup class="mb-4">
@@ -25,7 +26,7 @@
                     <CFormInput
                       type="password"
                       placeholder="Heslo"
-                      autocomplete="current-password"
+                      v-model="user.password"
                     />
                   </CInputGroup>
                   <CRow>
@@ -44,8 +45,10 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import axios from 'axios'
 
 export default {
   setup() {
@@ -53,17 +56,28 @@ export default {
     const store = useStore()
     const router = useRouter()
 
-    const login = () => {
-      store.commit('logginUser', {
-        id: 1,
-        name: 'Meno Priezvisko',
-        role: 'admin',
-      })
-      router.push('/')
+    const user = ref({
+      email: '',
+      password: ''
+    })
+
+
+    const login = async () => {
+      const res = await axios.post('login', user.value)
+      console.log(res.data.successful == 'True')
+      if(res.data.successful == 'True') {
+
+        console.log(res.data)
+        store.commit('logginUser', res.data.user)
+        router.push('/')
+      } else {
+        alert('Prihlasovacie údaje sú nesprávne')
+      }
     }
 
     return {
-      login
+      login,
+      user
     }
   }
 }

@@ -13,7 +13,6 @@
                     <CCol md="4">
                         <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="">
                         <h2>{{ `${user.first_name} ${user.last_name}` }}</h2>
-                        <p><strong>ID:</strong> {{ user.unique_id }}</p>
                     </CCol>
 
                     <CCol md="8">
@@ -63,8 +62,6 @@
 <script>
 import { useStore } from 'vuex'
 import { ref } from 'vue'
-import axios from 'axios'
-import { onMounted } from '@vue/runtime-core'
 
 export default {
     name: 'My profile',
@@ -74,14 +71,7 @@ export default {
         const store = useStore()
         const loggedUser = store.state.loggedUser
 
-        const getUser = async () => {
-            const res = await axios.get(`users/${loggedUser.id}`)
-            user.value = res.data
-        }
-
-        onMounted(() => {
-            getUser()
-        })
+        user = loggedUser
 
         return {
             user,

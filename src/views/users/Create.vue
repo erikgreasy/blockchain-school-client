@@ -38,6 +38,10 @@
                                 <CFormLabel for="privateEmail">Titul</CFormLabel>
                                 <CFormInput type="text" v-model="user.academic_degree" id="privateEmail" />
                             </div>
+                            <div class="mb-3">
+                                <CFormLabel for="password">Heslo</CFormLabel>
+                                <CFormInput type="text" v-model="user.password" id="password" />
+                            </div>
                         </CCol>
                     </CRow>
 
@@ -104,6 +108,7 @@ export default {
             email: '',
             private_email: '',
             academic_degree: '',
+            password: '',
             address: {
                 street: '',
                 house_number: '',

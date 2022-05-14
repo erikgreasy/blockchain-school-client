@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Vitajte {{ user.name }}</h1>
+    <h1>Vitajte {{ user.first_name }}</h1>
   </div>
 </template>
 

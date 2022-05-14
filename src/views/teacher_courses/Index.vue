@@ -56,7 +56,7 @@ export default {
     const loggedUser = useStore()
 
     const getCourses = async function () {
-      const res = await axios.get(`lecturers/${loggedUser.id}/courses`)
+      const res = await axios.get(`/courses/${loggedUser.id}/lecturer_courses`)
       courses.value = res.data
       console.log(res)
     }
