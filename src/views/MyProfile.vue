@@ -12,7 +12,7 @@
                 <CRow>
                     <CCol md="4">
                         <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="">
-                        <h2>{{ `${user.first_name} ${user.last_name}` }}</h2>
+                        <h2>{{ `${user.academic_degree} ${user.first_name} ${user.last_name}` }}</h2>
                     </CCol>
 
                     <CCol md="8">
@@ -26,7 +26,7 @@
                         <div v-if="user.address">
                             <CCardTitle> Adresa </CCardTitle>
                             <CCardText>
-                                <strong>Krajina:</strong> {{ user.address.country }}
+                                <strong>Krajina:</strong> {{ user.address.county }}
                             </CCardText>
                             <CCardText>
                                 <strong>Mesto:</strong> {{ user.address.city }}
@@ -39,15 +39,6 @@
                             </CCardText>
                             <hr />
                             <CCardTitle> Štúdium </CCardTitle>
-                            <CCardText>
-                                <strong>Fakulta:</strong> {{ user.study_info.faculty }}
-                            </CCardText>
-                            <CCardText>
-                                <strong>Odbor:</strong> {{ user.study_info.programme }}
-                            </CCardText>
-                            <CCardText>
-                                <strong>Forma:</strong> {{ user.study_info.form }}
-                            </CCardText>
                             <CCardText>
                                 <strong>Titul:</strong> {{ user.academic_degree }}
                             </CCardText>
