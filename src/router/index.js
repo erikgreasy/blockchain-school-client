@@ -39,12 +39,12 @@ const routes = [
       },
       {
         path: '/courses',
-        name: 'Courses.index',
+        name: 'Prehľad predmetov',
         component: () => import('@/views/courses/Index.vue'),
       },
       {
         path: '/courses/:id',
-        name: 'Courses.show',
+        name: 'Detail predmetu',
         component: () => import('@/views/courses/Show.vue'),
       },
       {
@@ -54,12 +54,12 @@ const routes = [
       },
       {
         path: '/courses/create',
-        name: 'Courses.create',
+        name: 'Nový predmet',
         component: () => import('@/views/courses/Create.vue'),
       },
       {
         path: '/students',
-        name: 'Students.index',
+        name: 'Zoznam študentov',
         component: () => import('@/views/students/Index.vue'),
       },
       {
@@ -69,12 +69,12 @@ const routes = [
       },
       {
         path: '/students/:id',
-        name: 'Students.show',
+        name: 'Detail študenta',
         component: () => import('@/views/students/Show.vue'),
       },
       {
         path: '/students/create',
-        name: 'Students.create',
+        name: 'Nový študent',
         component: () => import('@/views/students/Create.vue'),
       },
       {
@@ -94,7 +94,7 @@ const routes = [
       },
       {
         path: '/results',
-        name: 'Results.index',
+        name: 'Hodnotenie',
         component: () => import('@/views/results/Index.vue'),
       },
       {
@@ -104,7 +104,7 @@ const routes = [
       },
       {
         path: '/e-index',
-        name: 'EIndex',
+        name: 'E index',
         component: () => import('@/views/EIndex.vue'),
       },
       {
@@ -114,7 +114,7 @@ const routes = [
       },
       {
         path: '/my-profile',
-        name: 'My profile',
+        name: 'Môj profil',
         component: () => import('@/views/MyProfile.vue'),
       },
       {
