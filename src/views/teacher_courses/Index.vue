@@ -29,6 +29,9 @@
               >
                 Zobraziť študentov
               </router-link>
+              <router-link v-if="can_edit" :to="`/courses/${item._id}/edit`" class="btn btn-sm btn-secondary">
+                Upraviť
+              </router-link>
           </CTableDataCell>
         </CTableRow>
         <CTableRow></CTableRow>
@@ -50,6 +53,11 @@ export default {
 
     const store = useStore()
     const loggedUser = store.state.loggedUser
+    var can_edit = false
+
+    if( loggedUser.user_type == 'faculty_member' && ['programme garant', 'cource garant'].includes(loggedUser.user_role.name.toLowerCase())  ) {
+      can_edit = true
+    }
 
     const getCourses = async function () {
       console.log(`/courses/${loggedUser._id}/lecturer_courses`)
@@ -67,6 +75,7 @@ export default {
       courses,
       CIcon,
       cilTrash,
+      can_edit
     }
   },
 }
