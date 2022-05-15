@@ -103,6 +103,11 @@ const routes = [
         component: () => import('@/views/programme/Index.vue'),
       },
       {
+        path: '/programme/:id/students',
+        name: 'Študenti na programe',
+        component: () => import('@/views/programme/Students.vue'),
+      },
+      {
         path: '/results',
         name: 'Hodnotenie',
         component: () => import('@/views/results/Index.vue'),

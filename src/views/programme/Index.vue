@@ -5,6 +5,7 @@
                 <CTableRow>
                     <CTableHeaderCell>Program</CTableHeaderCell>
                     <CTableHeaderCell>Akronym</CTableHeaderCell>
+                    <CTableHeaderCell v-if="show_students"></CTableHeaderCell>
                 </CTableRow>
             </CTableHead>
             <CTableBody>
@@ -14,6 +15,9 @@
                     </CTableDataCell>
                     <CTableDataCell>
                         {{ item.acronym }}
+                    </CTableDataCell>
+                    <CTableDataCell v-if="show_students">
+                        <router-link :to="`/programme/${item._id}/students`" class="btn btn-secondary btn-sm">Študenti</router-link>
                     </CTableDataCell>
                 </CTableRow>
                 <CTableRow></CTableRow>
@@ -30,6 +34,7 @@ export default {
     setup() {
         var programmes = ref()
 
+        var show_students = true
 
         const getProgrammes = async function () {
             const res = await axios.get('programme')
@@ -43,6 +48,7 @@ export default {
 
         return {
             programmes,
+            show_students,
         }
     },
 }
