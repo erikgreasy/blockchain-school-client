@@ -21,6 +21,7 @@
           <CTableDataCell class="text-center">
             <div>
               <router-link :to="`/users/${item._id}`" class="btn btn-sm btn-primary me-2">Zobraziť detail</router-link>
+              <router-link :to="`/users/${item._id}/edit`" class="btn btn-sm btn-secondary me-2">Upraviť</router-link>
               <a href="#" @click.prevent="deleteUser(item._id)" class="text-danger">
                 <CIcon :icon="cilTrash" size="md"/>
               </a>

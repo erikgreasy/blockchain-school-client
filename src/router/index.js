@@ -88,6 +88,11 @@ const routes = [
         component: () => import('@/views/users/Show.vue'),
       },
       {
+        path: '/users/:id/edit',
+        name: 'Upraviť používateľa',
+        component: () => import('@/views/users/Edit.vue'),
+      },
+      {
         path: '/users/create',
         name: 'Vytvoriť nového',
         component: () => import('@/views/users/Create.vue'),
