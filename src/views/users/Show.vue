@@ -24,7 +24,7 @@
             <hr>
             <CCardTitle> Adresa </CCardTitle>
             <CCardText>
-              <strong>Krajina:</strong> {{ student.address?.country }}
+              <strong>Krajina:</strong> {{ student.address?.county }}
             </CCardText>
             <CCardText>
               <strong>Mesto:</strong> {{ student.address?.city }}

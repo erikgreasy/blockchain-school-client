@@ -47,7 +47,7 @@ export default {
     const getUsers = async () => {
       const res = await axios.get('users')
       console.log(res)
-      students.value = res.data
+      students.value = res.data.filter(user => user.user_type == 'faculty_member')
     }
 
     const deleteUser = async (user_id) => {

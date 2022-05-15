@@ -32,7 +32,7 @@ export default [
     name: 'Študenti',
     to: '/students',
     icon: 'cil-user',
-    userRoles: [''],
+    userRoles: ['system admin'],
   },
   {
     component: 'CNavItem',
