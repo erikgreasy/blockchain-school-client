@@ -6,7 +6,7 @@
           <CCardGroup>
             <CCard class="p-4">
               <CCardBody>
-                <CForm @submit="login">
+                <CForm @submit.prevent="login">
                   <h1>Prihlásenie</h1>
                   <p class="text-medium-emphasis">Prihláste sa do svojho účtu</p>
                   <CInputGroup class="mb-3">
