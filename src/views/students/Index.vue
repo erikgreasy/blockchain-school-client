@@ -17,7 +17,7 @@
               {{ item.first_name + ' ' + item.last_name }}</div>
           </CTableDataCell>
           <CTableDataCell>
-            {{ item.study_type }}-{{ item.study_programme }}
+            {{ item.study_programme.acronym }}
           </CTableDataCell>
           <CTableDataCell class="text-center">
             <div>

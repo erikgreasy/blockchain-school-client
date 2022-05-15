@@ -34,16 +34,10 @@
             <hr />
             <CCardTitle> Štúdium </CCardTitle>
             <CCardText>
-              <strong>Fakulta:</strong> 
+              <strong>Odbor:</strong> {{ student.study_programme?.name }}
             </CCardText>
             <CCardText>
-              <strong>Odbor:</strong> {{ student.study_programme }}
-            </CCardText>
-            <CCardText>
-              <strong>Forma:</strong> {{ student.study_form }}
-            </CCardText>
-            <CCardText>
-              <strong>Titul:</strong> 
+              <strong>Titul:</strong> {{ student.academic_degree }}
             </CCardText>
           </CCol>
         </CRow>
