@@ -57,8 +57,8 @@ export default {
     const router = useRouter()
 
     const user = ref({
-      email: '',
-      password: ''
+      email: 'jan.mrkva@gmail.com',
+      password: 'heslo'
     })
 
 
