@@ -57,6 +57,13 @@ export default [
   },
   {
     component: 'CNavItem',
+    name: 'Programy',
+    to: '/programmes',
+    icon: 'cil-notes',
+    userRoles: ['system admin', 'subdean', 'dean'],
+  },
+  {
+    component: 'CNavItem',
     name: 'Zápis/Registrácia',
     to: '/subject-registration',
     icon: 'cil-notes',

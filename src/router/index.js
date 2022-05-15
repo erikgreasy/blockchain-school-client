@@ -98,6 +98,11 @@ const routes = [
         component: () => import('@/views/users/Create.vue'),
       },
       {
+        path: '/programmes',
+        name: 'Prehľad programov',
+        component: () => import('@/views/programme/Index.vue'),
+      },
+      {
         path: '/results',
         name: 'Hodnotenie',
         component: () => import('@/views/results/Index.vue'),
