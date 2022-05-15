@@ -11,13 +11,13 @@
                             <strong>Semester:</strong> {{ course.trimester }}
                         </CCardText>
                         <CCardText>
-                            <strong>Garant:</strong> {{ course.garant }}
+                            <strong>Garant:</strong> {{ course.garant?.first_name + ' ' + course.garant?.last_name }}
                         </CCardText>
                         <CCardText>
                             <strong>Popis:</strong> {{ course.description }}
                         </CCardText>
                         <CCardText>
-                            <strong>Podmienky absolvovania:</strong> {{ course.passConditions }}
+                            <strong>Vyučujúci:</strong> {{ course.lecturer?.first_name + ' ' + course.lecturer?.last_name }}
                         </CCardText>
                     </CCol>
                 </CRow>

@@ -40,21 +40,26 @@
               </div>
             </CCol>
 
-            <!-- <CCol xs>
-              <multiselect
-                v-model="lecturer_id"
-                :options="lecturers"
-                :multiple="true"
-                :close-on-select="false"
-                :clear-on-select="false"
-                :preserve-search="true"
-                placeholder="Vyber vyučujúceho"
-                label="last_name"
-                track-by="_id"
-                :preselect-first="true"
-              >
-              </multiselect>
-            </CCol> -->
+            <CCol xs>
+              <div class="mb-3">
+                <CFormLabel for="lecturer_id">Vyučujúci predmetu</CFormLabel>
+                <CFormSelect
+                  size="sm"
+                  class="mb-3"
+                  aria-label="Small select example"
+                  v-model="course.lecturer_id"
+                >
+                  <option>Vyberte vyučujúceho:</option>
+                  <option
+                    :value="lecturer._id"
+                    v-for="lecturer in lecturers"
+                    :key="lecturer._id"
+                  >
+                    {{ lecturer.first_name + ' ' + lecturer.last_name }}
+                  </option>
+                </CFormSelect>
+              </div>
+            </CCol>
           </CRow>
 
           <CRow>
@@ -89,30 +94,14 @@
 <script>
 import axios from 'axios'
 import router from '@/router'
-// import Multiselect from 'vue-multiselect'
 
 export default {
-  // setup() {
-  //   const course = ref({
-  //     garant_id: '',
-  //     lecturer_id: [],
-  //     name: '',
-  //     acronym: '',
-  //     description: '',
-  //     trimester: '',
-  //     prerequisite_course_id: null,
-  //   })
-
-
   data () {
     return {
       course: {},
       lecturers: {},
       garants: {}
     }
-  },
-  components: {
-    // Multiselect,
   },
   methods: {
     async submitForm () {
@@ -131,6 +120,8 @@ export default {
       this.lecturers = Array.from(res.data.filter(
         (el) =>
           el.user_role?.name == 'Lecturer' ||
+          el.user_role?.name == 'Dean' ||
+          el.user_role?.name == 'Subdean ' ||
           el.user_role?.name == 'Course garant' ||
           el.user_role?.name == 'Programme garant',
       ))
