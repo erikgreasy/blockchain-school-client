@@ -34,10 +34,16 @@
                                 <CFormLabel for="privateEmail">Súkromný email</CFormLabel>
                                 <CFormInput type="text" v-model="user.private_email" id="privateEmail" />
                             </div>
+                        </CCol>
+                    </CRow>
+                    <CRow>
+                        <CCol xs>
                             <div class="mb-3">
                                 <CFormLabel for="privateEmail">Titul</CFormLabel>
                                 <CFormInput type="text" v-model="user.academic_degree" id="privateEmail" />
                             </div>
+                        </CCol>
+                        <CCol xs>
                             <div class="mb-3">
                                 <CFormLabel for="password">Heslo</CFormLabel>
                                 <CFormInput type="text" v-model="user.password" id="password" />

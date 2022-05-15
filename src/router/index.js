@@ -58,6 +58,11 @@ const routes = [
         component: () => import('@/views/courses/Create.vue'),
       },
       {
+        path: '/lecturers',
+        name: 'Vyučujúci',
+        component: () => import('@/views/lecturers/Index.vue'),
+      },
+      {
         path: '/students',
         name: 'Zoznam študentov',
         component: () => import('@/views/students/Index.vue'),

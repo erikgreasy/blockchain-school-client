@@ -119,16 +119,16 @@ export default {
       
         console.log(res.data)
 
-        garants.value = res.data.filter(
-            (el) => el.user_role?.name == 'Course garant',
-        )
-        lecturers.value = Array.from(res.data.filter((el) =>
+        lecturers.value = res.data.filter((el) =>
             el.user_role?.name == 'Lecturer' ||
             el.user_role?.name == 'Dean' ||
             el.user_role?.name == 'Subdean ' ||
             el.user_role?.name == 'Course garant' ||
             el.user_role?.name == 'Programme garant',
-        ))
+        )
+        garants.value = res.data.filter(
+            (el) => el.user_role?.name == 'Course garant',
+        )
         console.log(garants)
     }
 
@@ -148,6 +148,7 @@ export default {
 
     return {
       course,
+      lecturers,
       submitForm,
       garants
     }
