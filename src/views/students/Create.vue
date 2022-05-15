@@ -99,6 +99,7 @@
 <script>
 import {ref} from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 export default {
     name: 'Students.create',
@@ -120,11 +121,14 @@ export default {
             user_type: 'student',
         })
 
+        const router = useRouter()
+
         const submitForm = async () => {
             console.log(student.value)
             // alert('submit')
             const res = await axios.post('students', student.value)
             console.log(res)
+            router.push('/students')
         }
 
         return {
