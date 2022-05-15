@@ -52,7 +52,7 @@ const AppSidebarNav = defineComponent({
   },
   setup() {
     const store = useStore()
-    const userRole = store.state.loggedUser.user_role.name.toLowerCase()
+    const userRole = store.state.loggedUser.user_type == 'student' ? 'student' : store.state.loggedUser.user_role.name.toLowerCase()
 
     const route = useRoute()
     const firstRender = ref(true)
