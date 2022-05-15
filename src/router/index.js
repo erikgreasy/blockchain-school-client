@@ -35,7 +35,7 @@ const routes = [
       {
         path: '/courses/:id/edit',
         name: 'Upraviť predmet',
-        component: () => import('@/views/teacher_courses/Edit.vue'),
+        component: () => import('@/views/courses/Edit.vue'),
       },
       {
         path: '/courses',

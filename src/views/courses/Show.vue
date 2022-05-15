@@ -23,6 +23,11 @@
                 </CRow>
             </CCardBody>
         </CCard>
+        <div>
+            <router-link  class="btn btn-primary mt-3" :to="`/courses/${course._id}/edit`">
+                Úprava predmetu
+            </router-link>
+        </div>
     </div>
 </template>
 
