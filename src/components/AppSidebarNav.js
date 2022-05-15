@@ -62,7 +62,6 @@ const AppSidebarNav = defineComponent({
     })
 
     const renderItem = (item) => {
-      console.log(userRole)
       if( ! item.userRoles || 
           ( ! item.userRoles.includes(userRole) && !item.userRoles.includes('*') )
       ) return
