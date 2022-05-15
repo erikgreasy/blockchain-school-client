@@ -6,13 +6,8 @@
         <CRow>
           <CCol md="4">
             <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="">
-            <!-- <CAvatar
-              size="xl"
-              :src="student.avatar.src"
-              :status="student.avatar.status"
-            /> -->
+
             <h2>{{ `${student.first_name} ${student.last_name}` }}</h2>
-            <p><strong>ID:</strong> {{ student.id }}</p>
           </CCol>
 
           <CCol md="8">
@@ -20,21 +15,21 @@
             <CCardText> <strong>Meno:</strong> {{ `${student.first_name} ${student.last_name}` }} </CCardText>
             <CCardText> <strong>Email:</strong> {{ student.email }} </CCardText>
             <CCardText>
-              <strong>Sukromný email:</strong> {{ student.privateEmail }}
+              <strong>Sukromný email:</strong> {{ student.private_email }}
             </CCardText>
             <hr>
             <CCardTitle> Adresa </CCardTitle>
             <CCardText>
-              <strong>Krajina:</strong> 
+              <strong>Krajina:</strong> {{ student.address?.county }}
             </CCardText>
             <CCardText>
-              <strong>Mesto:</strong> 
+              <strong>Mesto:</strong> {{ student.address?.city }}
             </CCardText>
             <CCardText>
-              <strong>PSČ:</strong>
+              <strong>PSČ:</strong> {{ student.address?.postal_code }}
             </CCardText>
             <CCardText>
-              <strong>Ulica a číslo:</strong> 
+              <strong>Ulica a číslo:</strong> {{ student.address?.street }} {{ student.address?.house_number }}
             </CCardText>
             <hr />
             <CCardTitle> Štúdium </CCardTitle>
