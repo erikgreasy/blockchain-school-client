@@ -43,13 +43,13 @@
             <!-- <CCol xs>
               <multiselect
                 v-model="lecturer_id"
-                :options="lecturers.value"
+                :options="lecturers"
                 :multiple="true"
                 :close-on-select="false"
                 :clear-on-select="false"
                 :preserve-search="true"
-                placeholder="Pick some"
-                label="name"
+                placeholder="Vyber vyučujúceho"
+                label="last_name"
                 track-by="_id"
                 :preselect-first="true"
               >
@@ -87,62 +87,57 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import router from '@/router'
 // import Multiselect from 'vue-multiselect'
 
 export default {
-  name: 'Courses.create',
-  // components: { Multiselect },
-  setup() {
-    const course = ref({
-      garant_id: '',
-      lecturer_id: [],
-      name: '',
-      acronym: '',
-      description: '',
-      trimester: '',
-      prerequisite_course_id: null,
-    })
+  // setup() {
+  //   const course = ref({
+  //     garant_id: '',
+  //     lecturer_id: [],
+  //     name: '',
+  //     acronym: '',
+  //     description: '',
+  //     trimester: '',
+  //     prerequisite_course_id: null,
+  //   })
 
-    const submitForm = async function () {
-      const res = await axios.post('courses', course.value)
+
+  data () {
+    return {
+      course: {},
+      lecturers: {},
+      garants: {}
+    }
+  },
+  components: {
+    // Multiselect,
+  },
+  methods: {
+    async submitForm () {
+      const res = await axios.post('courses', this.course)
       // console.log(res.data)
 
       if (res.status === 200) {
         router.push('/courses')
       }
     }
-
-    const garants = ref([])
-    const lecturers = ref([])
-
-    const getRequredRoles = async () => {
+  },
+  async mounted () {
       const res = await axios.get('users')
-      // console.log(res)
-      lecturers.value = Array.from(res.data.filter(
+      
+      console.log(res)
+      this.lecturers = Array.from(res.data.filter(
         (el) =>
           el.user_role?.name == 'Lecturer' ||
           el.user_role?.name == 'Course garant' ||
           el.user_role?.name == 'Programme garant',
       ))
-      garants.value = res.data.filter(
+      this.garants = res.data.filter(
         (el) => el.user_role?.name == 'Course garant',
       )
-      console.log(lecturers.value)
+      console.log(this.lecturers)
     }
-
-    onMounted(() => {
-      getRequredRoles()
-    })
-
-    return {
-      garants,
-      lecturers,
-      course,
-      submitForm,
-    }
-  },
 }
 </script>
