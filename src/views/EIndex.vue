@@ -1,14 +1,5 @@
 <template>
     <div>
-        <div>
-            <CFormSelect size="sm" class="mb-3" aria-label="Small select example" @change="getCourses">
-                <option>Vyberte semester:</option>
-                <option value="1">1. BC - Zimný semester</option>
-                <option value="2">1. BC - Letný semester</option>
-                <option value="3">2. BC - Zimný semester</option>
-            </CFormSelect>
-            <h1 class="text-center">1. ING</h1>
-        </div>
         <CTable align="middle" class="mb-0 border" hover responsive>
             <CTableHead color="light">
                 <CTableRow>
@@ -33,19 +24,6 @@
                     <CTableDataCell>
                         <div>{{ course.grade || 'N/A' }}</div>
                     </CTableDataCell>
-                    <!-- <CTableDataCell class="text-center">
-                        <CAvatar size="md" :src="item.avatar.src" :status="item.avatar.status" />
-                    </CTableDataCell>
-                    <CTableDataCell>
-                        <div>{{ item.user.name }}</div>
-                    </CTableDataCell>
-                    <CTableDataCell class="text-center">
-                        {{ item.faculty }}
-                    </CTableDataCell>
-                    <CTableDataCell>
-                        Aplikovaná informatika (API)
-                    </CTableDataCell> -->
-                    
                 </CTableRow>
                 <CTableRow></CTableRow>
             </CTableBody>
@@ -55,29 +33,20 @@
 
 <script>
 import {ref, onMounted} from 'vue'
+import { useStore } from 'vuex'
+import axios from 'axios'
 
 export default {
     name: 'E-Index',
     setup() {
         var courses = ref()
+        const store = useStore()
+        const loggedUser = store.state.loggedUser
 
-        const courses1 = [
-            {
-                id: 25,
-                name: 'Paralelné programovanie',
-                grade: false,
-            },
-            {
-                id: 28,
-                name: 'Matematika 2',
-                grade: 'A',
-            },
-        ]
-
-
-
-        const  getCourses = function() {
-            courses.value = courses1
+        const  getCourses = async () => {
+            const res = await axios.get(`courses/${loggedUser._id}/student_courses`)
+            console.log(res.data)
+            courses.value = res.data
         }
 
         onMounted(() => {

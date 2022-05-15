@@ -10,18 +10,18 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="course in user.courses" :key="course.id">
+        <CTableRow v-for="course in courses" :key="course._id">
           <CTableDataCell>
-            <a href="/courses/id">{{ course.name }}</a> 
+            <router-link :to="`/courses/${course._id}`">{{ course.name }}</router-link>
           </CTableDataCell>
           <CTableDataCell>
             {{ course.acronym }}
           </CTableDataCell>
           <CTableDataCell>
             <div>
-              <router-link to="/registration/subject_id" class="btn btn-sm btn-primary">
+              <button @click="registerSubject(course._id)" class="btn btn-primary">
                 Zapísať predmet
-              </router-link>
+              </button>
             </div>
           </CTableDataCell>
         </CTableRow>
@@ -32,36 +32,34 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
+import axios from 'axios'
+import { onMounted } from '@vue/runtime-core'
 export default {
   name: 'Registration.index',
   setup() {
+    const courses = ref([])
+
+
+
+    const getCourses = async () => {
+      const res = await axios.get('courses')
+      console.log(res)
+
+      courses.value = res.data
+    }
+
+    const registerSubject = async () => {
+      alert('register')
+    }
+
+    onMounted(() => {
+      getCourses()
+    })
+
     return {
-      user: {
-        term: 'Letný semester 2021',
-        adademic: '2021/2022',
-        courses: [
-          {
-            id: '1',
-            name: 'Databázové systémy',
-            acronym: 'DBS',
-          },
-          {
-            id: '2',
-            name: 'Programovanie 1',
-            acronym: 'PROG1',
-          },
-          {
-            id: '3',
-            name: 'Automaty a formálne jazyky',
-            acronym: 'AFJ',
-          },
-          {
-            id: '4',
-            name: 'Algoritmy a dátové štruktúry',
-            acronym: 'ADS',
-          },
-        ],
-      },
+      courses,
+      registerSubject,
     }
   },
 }

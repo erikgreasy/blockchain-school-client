@@ -16,24 +16,19 @@
           <CTableDataCell>
             {{ item.acronym }}
           </CTableDataCell>
-          <CTableDataCell v-if="loggedUser.name == 'course-guarantor'">
-            <router-link
+            <!--<router-link
               :to="`/courses/${item.id}/edit`"
               class="btn btn-sm btn-primary me-3"
             >
               Upraviť predmet
-            </router-link>
-          </CTableDataCell>
-          <!-- <CTableDataCell> {{ item.term }} </CTableDataCell> -->
+            </router-link>-->
           <CTableDataCell>
-            <div class="d-flex align-items-center justify-content-center">
               <router-link
-                :to="`/courses/${item.id}/students`"
+                :to="`/courses/${item._id}/students`"
                 class="btn btn-sm btn-primary me-3"
               >
                 Zobraziť študentov
               </router-link>
-            </div>
           </CTableDataCell>
         </CTableRow>
         <CTableRow></CTableRow>
@@ -53,10 +48,12 @@ export default {
   setup() {
     var courses = ref()
 
-    const loggedUser = useStore()
+    const store = useStore()
+    const loggedUser = store.state.loggedUser
 
     const getCourses = async function () {
-      const res = await axios.get(`/courses/${loggedUser.id}/lecturer_courses`)
+      console.log(`/courses/${loggedUser._id}/lecturer_courses`)
+      const res = await axios.get(`/courses/${loggedUser._id}/lecturer_courses`)
       courses.value = res.data
       console.log(res)
     }

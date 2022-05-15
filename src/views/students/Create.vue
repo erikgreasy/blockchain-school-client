@@ -3,85 +3,46 @@
         <CCard class="mb-4">
             <CCardBody>
                 <CForm @submit.prevent="submitForm">
-                    <h2 class="mb-3 text-center">Študíjne informácie</h2>
-                    <CRow>
-                        <CCol xs>
-                            <div class="mb-3">
-                                <CFormLabel for="faculty">Fakulta</CFormLabel>
-                                <CFormSelect
-                                aria-label="Default select example"
-                                :options="[
-                                    'Vyberte fakultu',
-                                    { label: 'FEI', value: 'fei' },
-                                    { label: 'FIIT', value: 'fiit' },
-                                    { label: 'SJF', value: '3', disabled: true }
-                                ]">
-                                </CFormSelect>
-                            </div>
-                        </CCol>
-                        <CCol xs>
-                            <div class="mb-3">
-                                <CFormLabel for="study_type">Stupeň štúdia</CFormLabel>
-                                <CFormSelect
-                                aria-label="Default select example"
-                                :options="[
-                                    'Vyberte stupeň štúdia',
-                                    { label: 'Bc', value: 'fei' },
-                                    { label: 'Ing', value: 'fiit' },
-                                    { label: 'PhD', value: '3' }
-                                ]">
-                                </CFormSelect>
-                            </div>
-                        </CCol>
-                        <CCol xs>
-                            <div class="mb-3">
-                                <CFormLabel for="programme">Odbor</CFormLabel>
-                                <CFormSelect
-                                aria-label="Default select example"
-                                :options="[
-                                    'Vyberte odbor',
-                                    { label: 'Aplikovaná informatika', value: 'api' },
-                                    { label: 'Mechatronika', value: 'mech' },
-                                ]">
-                                </CFormSelect>
-                            </div>
-                        </CCol>
-                    </CRow>
-                    <CRow>
-                        <div class="mb-3">
-                            <CFormLabel for="avatar">Avatar</CFormLabel>
-                            <CFormInput type="file" v-model="student.avatar" id="avatar" />
-                        </div>
-                    </CRow>
-
-                    <hr class="my-5">
-
                     <h2 class="mb-3 text-center">Osobné údaje</h2>
                     <CRow>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="name">Meno</CFormLabel>
-                                <CFormInput type="text" v-model="student.name" id="name" />
+                                <CFormLabel for="first_name">Meno</CFormLabel>
+                                <CFormInput type="text" v-model="student.first_name" id="first_name" />
                             </div>
                         </CCol>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="surname">Priezvisko</CFormLabel>
-                                <CFormInput type="text" v-model="student.surname" id="surname" />
+                                <CFormLabel for="last_name">Priezvisko</CFormLabel>
+                                <CFormInput type="text" v-model="student.last_name" id="last_name" />
                             </div>
                         </CCol>
                     </CRow>
                     <CRow>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="name">Email</CFormLabel>
-                                <CFormInput type="email" v-model="student.email" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                <CFormLabel for="email">Email</CFormLabel>
+                                <CFormInput type="email" v-model="student.email" id="email" />
                             </div>
                         </CCol>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="privateEmail">Súkromný email</CFormLabel>
-                                <CFormInput type="text" v-model="student.privateEmail" id="privateEmail" />
+                                <CFormLabel for="private_email">Súkromný email</CFormLabel>
+                                <CFormInput type="text" v-model="student.private_email" id="private_email" />
+                            </div>
+                        </CCol>
+                    </CRow>
+                    <CRow>
+                        <CCol xs>
+                            <div class="mb-3">
+                                <CFormLabel for="academic_degree">Titul</CFormLabel>
+                                <CFormInput type="text" v-model="student.academic_degree" id="academic_degree" />
+                            </div>
+                        </CCol>
+                        <CCol xs>
+                            <div class="mb-3">
+                                <CFormLabel for="password">Heslo</CFormLabel>
+                                <CFormInput type="text" v-model="student.password" id="password" />
                             </div>
                         </CCol>
                     </CRow>
@@ -89,7 +50,7 @@
                     <hr class="my-5">
 
                     <h2 class="text-center my-3">Adresa</h2>
-                    <!-- <CRow>
+                    <CRow>
                         <CCol xs>
                             <div class="mb-3">
                                 <CFormLabel for="street">Ulica</CFormLabel>
@@ -112,8 +73,8 @@
                         </CCol>
                         <CCol xs>
                             <div class="mb-3">
-                                <CFormLabel for="postcode">PSČ</CFormLabel>
-                                <CFormInput type="text" v-model="student.address.postcode" id="postcode" />
+                                <CFormLabel for="postal_code">PSČ</CFormLabel>
+                                <CFormInput type="text" v-model="student.address.postal_code" id="postal_code" />
                             </div>
                         </CCol>
                     </CRow>
@@ -124,7 +85,7 @@
                                 <CFormInput type="text" v-model="student.address.country" id="country" />
                             </div>
                         </CCol>
-                    </CRow> -->
+                    </CRow>
                 
                     <div class="d-grid">
                         <CButton type="submit" color="primary">Uložiť</CButton>
@@ -143,27 +104,26 @@ export default {
     name: 'Students.create',
     setup() {
         const student = ref({
-            user_type: "student",
-            first_name: "Marek",
-            last_name: "Drab",
-            email: "xdrabm@stuba.sk",
-            academic_degree: "Bc.",
-            private_email: "marek.drablp@gmail.com",
-            address_id: null
-            // first_name: '',
-            // last_name: '',
-            // email: '',
-            // private_email: '',
-            // address: {
-            //     street: '',
-            //     houseNumber: '',
-            // }
+            first_name: '',
+            last_name: '',
+            email: '',
+            private_email: '',
+            academic_degree: '',
+            password: '',
+            address: {
+                street: '',
+                house_number: '',
+                postal_code: '',
+                city: '',
+                country: '',
+            },
+            user_type: 'student',
         })
 
         const submitForm = async () => {
             console.log(student.value)
             // alert('submit')
-            const res = await axios.post('students', student)
+            const res = await axios.post('students', student.value)
             console.log(res)
         }
 

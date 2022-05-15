@@ -18,14 +18,14 @@ export default [
     name: 'Predmety',
     to: '/courses',
     icon: 'cil-book',
-    userRoles: ['system admin']
+    userRoles: ['system admin', 'subdean', 'dean'],
   },
   {
     component: 'CNavItem',
     name: 'Moje predmety',
     to: '/my-courses',
     icon: 'cil-book',
-    userRoles: ['lecturer']
+    userRoles: ['lecturer', 'course garant', 'programme garant']
   },
   {
     component: 'CNavItem',

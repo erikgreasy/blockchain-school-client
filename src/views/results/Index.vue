@@ -9,7 +9,7 @@
         </CTableRow>
       </CTableHead>
       <CTableBody>
-        <CTableRow v-for="course in user.courses" :key="course.id">
+        <CTableRow v-for="course in courses" :key="course._id">
           <CTableDataCell>
             {{ course.name }}
           </CTableDataCell>
@@ -31,36 +31,30 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue"
+import axios from 'axios'
+import { useStore } from "vuex"
+
 export default {
   name: 'Results.index',
   setup() {
+    const courses = ref([])
+    const store = useStore()
+    const loggedUser = store.state.loggedUser
+
+    const getCourses = async () => {
+      const res = await axios.get(`courses/${loggedUser.id}/student_courses`)
+      console.log(res)
+
+      courses.value = res.data
+    }
+
+    onMounted(() => {
+      getCourses()
+    })
+
     return {
-      user: {
-        term: 'Letný semester 2021',
-        adademic: '2021/2022',
-        courses: [
-          {
-            id: '1',
-            name: 'Databázové systémy',
-            acronym: 'DBS',
-          },
-          {
-            id: '2',
-            name: 'Programovanie 1',
-            acronym: 'PROG1',
-          },
-          {
-            id: '3',
-            name: 'Automaty a formálne jazyky',
-            acronym: 'AFJ',
-          },
-          {
-            id: '4',
-            name: 'Algoritmy a dátové štruktúry',
-            acronym: 'ADS',
-          },
-        ],
-      },
+      courses,
     }
   },
 }
